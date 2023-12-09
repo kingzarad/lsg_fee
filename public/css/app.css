@@ -1,0 +1,343 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../image/csucc.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+}
+
+.navbar {
+  background-color: #F46C01 !important;
+}
+
+.navbar ul li a,
+.navbar a {
+  color: #e5e3e4 !important;
+}
+
+.navbar-brand {
+  font-family: "Knewave", cursive;
+}
+
+.login {
+  width: 100%;
+  height: 100%;
+}
+
+.modal-bg {
+  background-color: #FE8B2E !important;
+}
+
+.box:nth-child(1) {
+  margin-top: 10%;
+  padding: 50px;
+  font-family: "Knewave", cursive;
+}
+
+.box:nth-child(1) h1 {
+  margin-top: 10%;
+  font-size: 3.5rem;
+  color: #ffffff;
+  text-shadow: 0px 1px 2px gray;
+}
+
+.box:nth-child(1) h3 {
+  color: #e5e3e4;
+  font-size: 2.5rem;
+  text-shadow: 0px 1px 2px gray;
+}
+
+.box:nth-child(2) {
+  width: 400px;
+  margin-top: 5%;
+  padding: 50px;
+  box-shadow: 0px 15px 1px 5px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+}
+
+.box:nth-child(2) label {
+  color: #e5e3e4;
+}
+
+.box:nth-child(2) button {
+  width: 100%;
+  color: #e5e3e4;
+  background-color: #F46C01;
+}
+
+.box:nth-child(2) #phoneHelp {
+  color: #e5e3e4;
+}
+
+.notfound {
+  display: flex;
+
+  justify-content: center;
+  width: 100%;
+}
+
+.notfound h1 {
+  margin-top: 20%;
+  text-align: center;
+  font-family: "Knewave", cursive;
+  text-shadow: 0px 1px 2px gray;
+}
+
+#otpsend {
+  display: none;
+}
+.eye i {
+  margin-left: -0px;
+}
+
+.home {
+  width: 100%;
+  height: 100vh;
+}
+.home h1 {
+  font-size: 3.4rem;
+  font-family: "Knewave", cursive;
+}
+.home strong {
+  color: #ddbeaa;
+  text-shadow: 0px 1px 2px gray;
+}
+
+#error_status {
+  color: rgb(231, 125, 125) !important;
+}
+
+.emtxt {
+  color: #dddddd !important;
+}
+.emtxt strong {
+  cursor: pointer;
+}
+
+.answer,
+.choice-btn {
+  font-family: "Edu NSW ACT Foundation", cursive;
+  font-size: 2rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  box-shadow: 0 0 5 rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+  padding: 10px;
+  border: none;
+}
+
+.restart-btn {
+  font-family: "Edu NSW ACT Foundation", cursive;
+  font-size: 1.5rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  box-shadow: 0 0 5 rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+  padding: 5px;
+  border: none;
+}
+.results {
+  position: relative;
+  right: 80px;
+  width: 100%;
+}
+
+.chart {
+  width: 100%;
+  padding: 20px;
+}
+.content {
+  width: 100% !important;
+  padding: 20px;
+}
+
+.content p {
+  text-align: left;
+  font-size: 1.5rem;
+  font-family: "Edu NSW ACT Foundation", cursive;
+}
+
+.resend-container {
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  color: #fff !important;
+}
+
+.resend-container button[type="button"] {
+  border: none !important;
+  color: #8bc0fd !important;
+  background-color: inherit !important;
+}
+
+.button-sidebar {
+  width: 210px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 25px;
+  margin-bottom: 10px;
+  color: #fff !important;
+  background-color: #F46C01;
+  text-align: center;
+}
+
+#logout {
+  color: red !important  ;
+}
+
+.logo {
+  width: 50px;
+  margin-left: 20px;
+}
+
+.acc_name {
+  margin-right: 20px;
+}
+@keyframes button-click {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 5px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.password-bar {
+  display: none;
+  flex-direction: column;
+}
+
+.password-strength-text {
+  color: #fff !important;
+}
+.password-strength-bar {
+  margin-top: 10px;
+  background-color: #ccc;
+  border-radius: 4px;
+  height: 10px;
+  position: relative;
+}
+
+.password-strength-bar-inner {
+  background-color: #ccc;
+  border-radius: 4px;
+  height: 100%;
+  position: absolute;
+
+  top: 0;
+  left: 0;
+}
+
+.weak {
+  background-color: #ff4d4d !important;
+  /* weak */
+  width: 25%;
+}
+
+.okay {
+  background-color: #ffa64d !important;
+  /* okay */
+  width: 50%;
+}
+
+.good {
+  background-color: #1e90ff !important;
+  /* good */
+  width: 75%;
+}
+
+.strong {
+  background-color: #98fb98 !important;
+  /* strong */
+  width: 100%;
+}
+
+.password-strength-text {
+  margin-top: 5px;
+}
+
+.password-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 500px !important;
+}
+
+.file-upload {
+  background-color: #ffffff;
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+.file-upload-btn:hover {
+  background: #1AA059;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.file-upload-btn:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+.file-upload-content {
+  display: none;
+  text-align: center;
+}
+
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+
+  height: 20%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-upload-wrap {
+  border: 5px dotted #fff;
+  padding: 50px;
+}
+
+.image-upload-wrap .drag-text h3 {
+
+  color: #fff !important;
+  text-align: center;
+}
+
+.file-upload-image {
+  height: 230px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.remove-image {
+  border: none !important;
+}
