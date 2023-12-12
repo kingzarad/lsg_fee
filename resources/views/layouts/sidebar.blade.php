@@ -16,7 +16,7 @@
                 <li>
                     <a class="waves-effect waves-dark  button-sidebar" href="{{ route('users') }}"
                         class="link-dark text-white rounded">
-                        <span class="hide-menu text-white">USERS</span>
+                        <span class="hide-menu text-white">STUDENTS</span>
                     </a>
                 </li>
                 <li>

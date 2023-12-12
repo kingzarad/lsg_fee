@@ -40,7 +40,13 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'students' => [
+            'driver' => 'session',
+            'provider' => 'student_users', // Use the 'admin' provider for the 'admin' guard
+        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -65,10 +71,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'student_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Students::class,
+        ],
     ],
 
     /*
@@ -93,6 +99,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'student_users' => [
+            'provider' => 'student_users',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

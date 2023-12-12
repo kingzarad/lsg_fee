@@ -1,4 +1,4 @@
-@extends('layouts.admin.index')
+@extends('layouts.index')
 @section('content')
     <div class="page-wrapper dashboard">
         <div class="container-fluid">
@@ -17,10 +17,12 @@
                             <h4 class="card-title">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h5 class="m-0 font-weight-bold text-warning">COURSE LIST</h5>
-                                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#productModal"><i
-                                            class="bi bi-plus-circle"></i>&nbsp;&nbsp;Add new course</button>
+                                    <a class="btn btn-warning" href="{{ route('course.add') }}"><i
+                                            class="bi bi-plus-circle"></i>&nbsp;&nbsp;Add new course</a>
                                 </div>
                             </h4>
+                            @include('shared.success')
+                            @include('shared.error')
                             <div class="table-responsive">
                                 <table id="datatable" class="table table-bordered">
                                     <thead class="bg-warning text-white">
@@ -36,11 +38,34 @@
                                             <th></th>
                                             <th></th>
                                             <th></th>
-
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                        @foreach ($courses as $index => $row)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $row->course_name }}</td>
+                                                <td>{{ $row->created_at }}</td>
+                                                <td class="text-end">
+                                                    <div class="d-flex">
+                                                        <a href="{{ route('course.edit', $row->id) }}"
+                                                            class="btn text-success"><i class="bi bi-pencil"></i></a>
 
+                                                        <form id="deleteForm_{{ $row->id }}"
+                                                            action="{{ route('course.destroy', $row->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="button" class="btn text-danger"
+                                                                onclick="confirmAndSubmit('{{ $row->id }}')">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </form>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -51,3 +76,10 @@
         </div>
     </div>
 @endsection
+<script>
+    function confirmAndSubmit(itemId) {
+        if (confirm('Are you sure you want to delete this course?')) {
+            document.getElementById('deleteForm_' + itemId).submit();
+        }
+    }
+</script>

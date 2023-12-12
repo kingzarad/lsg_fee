@@ -1,4 +1,4 @@
-@extends('layouts.admin.index')
+@extends('layouts.index')
 @section('content')
     <div class="page-wrapper dashboard">
         <div class="container-fluid">
@@ -17,8 +17,8 @@
                             <h4 class="card-title">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h5 class="m-0 font-weight-bold text-warning">COLLEGE FEES LIST</h5>
-                                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#productModal"><i
-                                            class="bi bi-plus-circle"></i>&nbsp;&nbsp;Add new fee</button>
+                                    <a class="btn btn-warning" href="{{ route('fees.add') }}"><i
+                                            class="bi bi-plus-circle"></i>&nbsp;&nbsp;Add new fee</a>
                                 </div>
                             </h4>
                             <div class="table-responsive">
@@ -39,11 +39,54 @@
                                             <th></th>
                                             <th></th>
                                             <th></th>
-
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                        @foreach ($fees_list as $index => $row)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>
+                                                    @foreach ($students as $data)
+                                                        @if ($row->users_id == $data->id)
+                                                            {{ $data->fname . ' ' . $data->lname . ' ' . $data->mname }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td>{{ $row->fee_type }}</td>
+                                                <td><strong>{{ $row->amount }}</strong></td>
+                                                <td>{{ $row->due_date }}</td>
+                                                <td
+                                                    class="text-{{ $row->status === 'paid' ? 'success' : ($row->status === 'unpaid' ? 'danger' : 'warning') }}">
+                                                    <strong> {{ $row->status }}</strong>
+                                                </td>
+                                                <td class="text-end">
+                                                    <div class="d-flex">
+                                                        @if ($row->proof_payment != '' && $row->status != 'paid')
+                                                            <a href="{{ route('fees.payment', $row->id) }}"
+                                                                class="btn text-info"><i class="bi bi-eye"></i></a>
+                                                        @endif
+                                                        @if ($row->status != 'paid')
+                                                            <a href="{{ route('fees.edit', $row->id) }}"
+                                                                class="btn text-success"><i class="bi bi-pencil"></i></a>
+                                                        @endif
+                                                        <form id="deleteForm_{{ $row->id }}"
+                                                            action="{{ route('fees.destroy', $row->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="button" class="btn text-danger"
+                                                                onclick="confirmAndSubmit('{{ $row->id }}')">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </form>
 
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -54,3 +97,10 @@
         </div>
     </div>
 @endsection
+<script>
+    function confirmAndSubmit(itemId) {
+        if (confirm('Are you sure you want to delete this item?')) {
+            document.getElementById('deleteForm_' + itemId).submit();
+        }
+    }
+</script>
