@@ -23,7 +23,7 @@ class FeesController extends Controller
     }
     public function Store()
     {
-
+        // dd(request()->all());
         request()->validate([
             'student' => 'required',
             'fee_type' => 'required|min:3|max:50',

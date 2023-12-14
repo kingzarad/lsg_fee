@@ -35,7 +35,7 @@
                                                             {{ $row->id_number . ' / ' . $row->fname . ' ' . $row->lname . ' ' . $row->mname . ' / ' }}
 
                                                             @foreach ($courses as $item)
-                                                                @if ($row->id == $item->id)
+                                                                @if ($row->course_id == $item->id)
                                                                     {{ $item->course_name }}
                                                                 @endif
                                                             @endforeach

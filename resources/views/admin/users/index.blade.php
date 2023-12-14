@@ -53,8 +53,9 @@
                                                 <td>{{ $row->id_number }}</td>
                                                 <td>{{ $row->fname . ' ' . $row->lname . ' ' . $row->mname }}</td>
                                                 <td>
+
                                                     @foreach ($courses as $item)
-                                                        @if ($row->id == $item->id)
+                                                        @if ($row->course_id == $item->id)
                                                             {{ $item->course_name }}
                                                         @endif
                                                     @endforeach

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('id_number');
             $table->string('year_level');
             $table->string('sex');
-            $table->foreignId('course_id');
+            $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

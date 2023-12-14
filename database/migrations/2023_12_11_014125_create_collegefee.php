@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('proof_payment')->nullable();;
             $table->date('due_date');
-            $table->foreignId('users_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('users_id')->constrained('students')->cascadeOnDelete();
             $table->timestamps();
         });
     }
