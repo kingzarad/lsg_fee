@@ -21,7 +21,10 @@ class AuthController extends Controller
         if (auth('students')->check()) {
             return redirect()->route('users.home');
         }
-        return view('login_users');
+
+        return response()->view('login_users')->header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        ->header('Pragma', 'no-cache')
+        ->header('Expires', '0');
     }
 
     public function Admin()
@@ -32,7 +35,10 @@ class AuthController extends Controller
         if (auth('students')->check()) {
             return redirect()->route('users.home');
         }
-        return view('login_admin');
+
+        return response()->view('login_admin')->header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        ->header('Pragma', 'no-cache')
+        ->header('Expires', '0');
     }
 
     public function Register()
@@ -43,10 +49,10 @@ class AuthController extends Controller
         if (auth('students')->check()) {
             return redirect()->route('users.home');
         }
-        return view(
-            'register',
-            ['courses' => Course::orderBy('created_at', 'DESC')->get()]
-        );
+
+        return response()->view('register',['courses' => Course::orderBy('created_at', 'DESC')->get()])->header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        ->header('Pragma', 'no-cache')
+        ->header('Expires', '0');
     }
 
     public function Authenticate_User()
@@ -155,12 +161,18 @@ class AuthController extends Controller
     public function LogoutUser()
     {
         auth('students')->logout();
-        return redirect()->route('login_users');
+
+        return response()->view('login_users')->header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        ->header('Pragma', 'no-cache')
+        ->header('Expires', '0');
+
     }
 
     public function LogoutAdmin()
     {
         auth('web')->logout();
-        return redirect()->route('login_admin');
+        return response()->view('login_admin')->header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        ->header('Pragma', 'no-cache')
+        ->header('Expires', '0');
     }
 }

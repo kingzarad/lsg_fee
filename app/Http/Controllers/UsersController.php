@@ -11,11 +11,12 @@ class UsersController extends Controller
 {
     public function Index()
     {
-
-        return view('users.home', [
+        return response()->view('users.home', [
             'fees_list' => CollegeFee::orderBy('created_at', 'DESC')->get(),
             'students' => Students::orderBy('created_at', 'DESC')->get()
-        ]);
+        ])->header('Cache-Control', 'no-cache, no-store, must-revalidate')
+            ->header('Pragma', 'no-cache')
+            ->header('Expires', '0');
     }
 
     public function Show()

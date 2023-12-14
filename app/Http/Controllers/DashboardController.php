@@ -8,6 +8,10 @@ class DashboardController extends Controller
 {
     public function Index()
     {
-        return view('admin.dashboard');
+       
+        return response()->view('admin.dashboard')->header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        ->header('Pragma', 'no-cache')
+        ->header('Expires', '0');
+
     }
 }
